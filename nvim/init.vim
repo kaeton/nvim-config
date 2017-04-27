@@ -25,106 +25,189 @@ let mapleader=" "
 " set fileencodings=euc-jp,japan,shift-jis,iso-2022-jp,cp932,utf-8,utf-16,ucs-2-internal,ucs-2
 ""set encoding=euc-jp
 ""set fileencodings=iso-2022-jp,euc-jp,cp932,utf-8,utf-16,ucs-2-internal,ucs-2
-""set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,utf-16,ucs-2-internal,ucs-2
+"set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,utf-16,ucs-2-internal,ucs-2
 "set encoding=japan
 
-" --------------------------------
-"  neobundle
-if 0 | endif
-
-if &compatible
+"dein Scripts-----------------------------
+if &compatible  
   set nocompatible               " Be iMproved
 endif
 
 " Required:
-set runtimepath^=~/.vim/bundle/neobundle.vim/
+set runtimepath+=/Users/hanyu_t/.config/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
+if dein#load_state('/Users/hanyu_t/.config/dein')  
+  call dein#begin('/Users/hanyu_t/.config/dein')
 
-" Let NeoBundle manage NeoBundle
+  " Let dein manage dein
+  " Required:
+  call dein#add('/Users/lorentzca/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here:
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+
+  " You can specify revision/branch/tag.
+  call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+  " easy motion plugin
+  call dein#add('Lokaltog/vim-easymotion')
+  let g:EasyMotion_do_mapping = 0 "Disable default mappings
+  nmap s <Plug>(easymotion-s2)
+
+  " unite vim plugin
+  call dein#add('Shougo/unite.vim')
+  let g:unite_enable_start_insert=1
+  let g:unite_source_history_yank_enable =1
+  let g:unite_source_file_mru_limit = 200
+  nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
+  nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+  nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+  nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+  nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+
+  " comment out plugin setting. This function move with <C-k>
+  call dein#add("tyru/caw.vim.git")
+  nmap <C-K> <Plug>(caw:i:toggle)
+  vmap <C-K> <Plug>(caw:i:toggle)
+
+  " vim-fugitive
+  " This plugin make to use git commands in vim editor
+  call dein#add('tpope/vim-fugitive')
+
+  " this plugin shows syntax error
+  call dein#add('scrooloose/syntastic.git')
+  let g:syntastic_python_checkers = ["flake8"]
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+ 
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  highlight SyntasticError guibg=#2f0000
+ 
+  " this plugin can run program in editor
+  " short cut \ r
+  call dein#add('thinca/vim-quickrun')
+  set splitright
+  let g:quickrun_config = {'_': {'hook/time/enable': '1'},}
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
 " Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+filetype plugin indent on  
+syntax enable
 
-" My Bundles here:
-" Refer to |:NeoBundle-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
 
-" this bundle avoid json double quotation
-NeoBundle 'elzr/vim-json'
-let g:vim_json_syntax_conceal = 0
+"End dein Scripts-------------------------
 
-" plugin
-" unite.vim
-NeoBundle 'Shougo/unite.vim'
-let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable =1
-let g:unite_source_file_mru_limit = 200
-nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+"--------------------------------
+" neobundle
 
-" caw.vim
-" comment out plugin
-NeoBundle "tyru/caw.vim.git"
-nmap <C-K> <Plug>(caw:i:toggle)
-vmap <C-K> <Plug>(caw:i:toggle)
+if 0 | endif
 
-" undotree.vim
-" This plugin make it easy to manage the undo command
+" if &compatible
+"   set nocompatible               " Be iMproved
+" endif
 "
-" NeoBundle 'mbbill/undotree'
-" nmap <Leader>u :UndotreeToggle<CR>
-" let g:undotree_SetFocusWhenToggle = 1
-" let g:undotree_WindowLayout = 'topleft'
-" let g:undotree_SplitWidth = 35
-" let g:undotree_diffAutoOpen = 1
-" let g:undotree_diffpanelHeight = 25
-" let g:undotree_RelativeTimestamp = 1
-" let g:undotree_TreeNodeShape = '*'
-" let g:undotree_HighlightChangedText = 1
-" let g:undotree_HighlightSyntax = "UnderLined"
-
-" vim-fugitive
-" This plugin make to use git commands in vim editor
-NeoBundle 'tpope/vim-fugitive'
-
-NeoBundle 'nvie/vim-flake8'
-
-" this plugin shows syntax error
-NeoBundle 'scrooloose/syntastic.git'
-let g:syntastic_python_checkers = ["flake8"]
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-highlight SyntasticError guibg=#2f0000
-
-" this plugin can run program in editor
-" short cut \ r
-NeoBundle 'thinca/vim-quickrun'
-set splitright
-let g:quickrun_config = {'_': {'hook/time/enable': '1'},}
-
-" easy motion plugin setting
-NeoBundle 'Lokaltog/vim-easymotion'
-let g:EasyMotion_do_mapping = 0 "Disable default mappings
-nmap s <Plug>(easymotion-s2)
-
-call neobundle#end()
+" Required:
+" set runtimepath^=~/.vim/bundle/neobundle.vim/
+"
+" " Required:
+" call neobundle#begin(expand('~/.vim/bundle/'))
+"
+" " Let NeoBundle manage NeoBundle
+" " Required:
+" NeoBundleFetch 'Shougo/neobundle.vim'
+"
+" " My Bundles here:
+" " Refer to |:NeoBundle-examples|.
+" " Note: You don't set neobundle setting in .gvimrc!
+"
+" " this bundle avoid json double quotation
+" NeoBundle 'elzr/vim-json'
+" let g:vim_json_syntax_conceal = 0
+"
+" " plugin
+" " unite.vim
+" NeoBundle 'Shougo/unite.vim'
+" let g:unite_enable_start_insert=1
+" let g:unite_source_history_yank_enable =1
+" let g:unite_source_file_mru_limit = 200
+" nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
+" nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+" nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
+"
+" " caw.vim
+" " comment out plugin
+" NeoBundle "tyru/caw.vim.git"
+" nmap <C-K> <Plug>(caw:i:toggle)
+" vmap <C-K> <Plug>(caw:i:toggle)
+"
+" " undotree.vim
+" " This plugin make it easy to manage the undo command
+" "
+" " NeoBundle 'mbbill/undotree'
+" " nmap <Leader>u :UndotreeToggle<CR>
+" " let g:undotree_SetFocusWhenToggle = 1
+" " let g:undotree_WindowLayout = 'topleft'
+" " let g:undotree_SplitWidth = 35
+" " let g:undotree_diffAutoOpen = 1
+" " let g:undotree_diffpanelHeight = 25
+" " let g:undotree_RelativeTimestamp = 1
+" " let g:undotree_TreeNodeShape = '*'
+" " let g:undotree_HighlightChangedText = 1
+" " let g:undotree_HighlightSyntax = "UnderLined"
+"
+" " vim-fugitive
+" " This plugin make to use git commands in vim editor
+" NeoBundle 'tpope/vim-fugitive'
+"
+" NeoBundle 'nvie/vim-flake8'
+"
+" " this plugin shows syntax error
+" NeoBundle 'scrooloose/syntastic.git'
+" let g:syntastic_python_checkers = ["flake8"]
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" highlight SyntasticError guibg=#2f0000
+"
+" " this plugin can run program in editor
+" " short cut \ r
+" NeoBundle 'thinca/vim-quickrun'
+" set splitright
+" let g:quickrun_config = {'_': {'hook/time/enable': '1'},}
+"
+" " easy motion plugin setting
+" NeoBundle 'Lokaltog/vim-easymotion'
+" let g:EasyMotion_do_mapping = 0 "Disable default mappings
+" nmap s <Plug>(easymotion-s2)
+"
+" call neobundle#end()
 
 " Required:
 filetype plugin indent on
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
-NeoBundleCheck
 
 " for UTF-8
 set ambiwidth=double
