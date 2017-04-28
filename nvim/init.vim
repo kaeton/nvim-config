@@ -1,3 +1,17 @@
+" for UTF-8
+set ambiwidth=double
+set fileencoding=utf-8
+" set encoding=utf-8
+set fileencodings=utf-8,euc-jp,japan,shift-jis,iso-2022-jp,cp932,utf-16,ucs-2-internal,ucs-2
+
+" for EUC
+"set fileencoding=euc-jp
+"set encoding=euc-jp
+"set fileencodings=euc-jp,utf-8,japan,shift-jis,iso-2022-jp,cp932,utf-16,ucs-2-internal,ucs-2
+
+"set termencoding=japan
+set termencoding=utf-8
+
 " set nobackup autoindent ul=0 showmode report=1 notextauto showmatch suffixes='.log.aux.dvi.o.bak.swp'
 set nobackup autoindent ul=0 showmode report=1 showmatch suffixes='.log.aux.dvi.o.bak.swp'
 set tabstop=8 noexpandtab smartindent smarttab
@@ -15,7 +29,6 @@ set nu
 set title
 set cursorline
 map  :buffers
-map  :bdelete 
 " highlight CursorLine ctermbg=240
 " highlight Comment ctermfg=50
 inoremap  
@@ -92,8 +105,12 @@ if dein#load_state('/Users/hanyu_t/.config/dein')
   " this plugin can run program in editor
   " short cut \ r
   call dein#add('thinca/vim-quickrun')
-  set splitright
+  " set splitleft
+
   let g:quickrun_config = {'_': {'hook/time/enable': '1'},}
+  " set splitright
+  " " let g:quickrun_config = {'_': {'hook/time/format': '1'},}
+  " let g:quickrun_config = {'_': {'type': 'hook/time/format'},}
 
   " Required:
   call dein#end()
@@ -209,26 +226,27 @@ filetype plugin indent on
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 
-" for UTF-8
-set ambiwidth=double
-set fileencoding=utf-8
-set encoding=utf-8
-set fileencodings=utf-8,euc-jp,japan,shift-jis,iso-2022-jp,cp932,utf-16,ucs-2-internal,ucs-2
-" for EUC
-"set fileencoding=euc-jp
-"set encoding=euc-jp
-"set fileencodings=euc-jp,utf-8,japan,shift-jis,iso-2022-jp,cp932,utf-16,ucs-2-internal,ucs-2
+" " for UTF-8
+" set ambiwidth=double
+" set fileencoding=utf-8
+" set encoding=utf-8
+" set fileencodings=utf-8,euc-jp,japan,shift-jis,iso-2022-jp,cp932,utf-16,ucs-2-internal,ucs-2
+"
+" " for EUC
+" "set fileencoding=euc-jp
+" "set encoding=euc-jp
+" "set fileencodings=euc-jp,utf-8,japan,shift-jis,iso-2022-jp,cp932,utf-16,ucs-2-internal,ucs-2
+"
+" "set termencoding=japan
+" set termencoding=utf-8
 
-"set termencoding=japan
-set termencoding=utf-8
-
-source ~/.vim/format.vim
+source ~/.config/nvim/format.vim
 let format_join_spaces = 2
 let format_allow_over_tw = 1
 map Q gq
 "set formatoptions+=mM
 
-let myscriptsfile = "~/.vim/myscripts.vim"
+let myscriptsfile = "~/.config/nvim/myscripts.vim"
 
 syntax on
 set hlsearch
@@ -250,16 +268,16 @@ let loaded_ruby_ftplugin = 1
 let loaded_matchparen = 1
 
 "for ruby
-autocmd BufNewFile *.rb 0r ~/.vim/templates/rb.tpl
+autocmd BufNewFile *.rb 0r ~/.config/nvim/templates/rb.tpl
 
 "for python
-autocmd BufNewFile *.py 0r ~/.vim/templates/py.tpl
+autocmd BufNewFile *.py 0r ~/.config/nvim/templates/py.tpl
 
 "for shellscript
-autocmd BufNewFile *.sh 0r ~/.vim/templates/sh.tpl
+autocmd BufNewFile *.sh 0r ~/.config/nvim/templates/sh.tpl
 
 "for node.js
-autocmd BufNewFile *.js 0r ~/.vim/templates/js.tpl
+autocmd BufNewFile *.js 0r ~/.config/nvim/templates/js.tpl
 
 set noundofile
 
