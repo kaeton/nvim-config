@@ -101,6 +101,11 @@ if dein#load_state('/Users/hanyu_t/.config/dein')
   call dein#save_state()
 endif
 
+" this option will update dein vim plugin install automatically
+if has('vim_starting') && dein#check_install()
+  call dein#install()
+endif
+
 " Required:
 filetype plugin indent on  
 syntax enable
