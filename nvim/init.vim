@@ -1,13 +1,7 @@
 " for UTF-8
 set ambiwidth=double
 set fileencoding=utf-8
-" set encoding=utf-8
 set fileencodings=utf-8,euc-jp,japan,shift-jis,iso-2022-jp,cp932,utf-16,ucs-2-internal,ucs-2
-
-" for EUC
-"set fileencoding=euc-jp
-"set encoding=euc-jp
-"set fileencodings=euc-jp,utf-8,japan,shift-jis,iso-2022-jp,cp932,utf-16,ucs-2-internal,ucs-2
 
 "set termencoding=japan
 set termencoding=utf-8
@@ -34,12 +28,6 @@ map  :buffers
 inoremap  
 let mapleader=" "
 :set conceallevel=0
-
-" set fileencodings=euc-jp,japan,shift-jis,iso-2022-jp,cp932,utf-8,utf-16,ucs-2-internal,ucs-2
-""set encoding=euc-jp
-""set fileencodings=iso-2022-jp,euc-jp,cp932,utf-8,utf-16,ucs-2-internal,ucs-2
-"set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,utf-16,ucs-2-internal,ucs-2
-"set encoding=japan
 
 "dein Scripts-----------------------------
 if &compatible  
@@ -105,12 +93,8 @@ if dein#load_state('/Users/hanyu_t/.config/dein')
   " this plugin can run program in editor
   " short cut \ r
   call dein#add('thinca/vim-quickrun')
-  " set splitleft
-
   let g:quickrun_config = {'_': {'hook/time/enable': '1'},}
-  " set splitright
-  " " let g:quickrun_config = {'_': {'hook/time/format': '1'},}
-  " let g:quickrun_config = {'_': {'type': 'hook/time/format'},}
+  set splitright
 
   " Required:
   call dein#end()
@@ -128,117 +112,8 @@ syntax enable
 
 "End dein Scripts-------------------------
 
-"--------------------------------
-" neobundle
-
-if 0 | endif
-
-" if &compatible
-"   set nocompatible               " Be iMproved
-" endif
-"
-" Required:
-" set runtimepath^=~/.vim/bundle/neobundle.vim/
-"
-" " Required:
-" call neobundle#begin(expand('~/.vim/bundle/'))
-"
-" " Let NeoBundle manage NeoBundle
-" " Required:
-" NeoBundleFetch 'Shougo/neobundle.vim'
-"
-" " My Bundles here:
-" " Refer to |:NeoBundle-examples|.
-" " Note: You don't set neobundle setting in .gvimrc!
-"
-" " this bundle avoid json double quotation
-" NeoBundle 'elzr/vim-json'
-" let g:vim_json_syntax_conceal = 0
-"
-" " plugin
-" " unite.vim
-" NeoBundle 'Shougo/unite.vim'
-" let g:unite_enable_start_insert=1
-" let g:unite_source_history_yank_enable =1
-" let g:unite_source_file_mru_limit = 200
-" nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
-" nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-" nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-" nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-" nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
-"
-" " caw.vim
-" " comment out plugin
-" NeoBundle "tyru/caw.vim.git"
-" nmap <C-K> <Plug>(caw:i:toggle)
-" vmap <C-K> <Plug>(caw:i:toggle)
-"
-" " undotree.vim
-" " This plugin make it easy to manage the undo command
-" "
-" " NeoBundle 'mbbill/undotree'
-" " nmap <Leader>u :UndotreeToggle<CR>
-" " let g:undotree_SetFocusWhenToggle = 1
-" " let g:undotree_WindowLayout = 'topleft'
-" " let g:undotree_SplitWidth = 35
-" " let g:undotree_diffAutoOpen = 1
-" " let g:undotree_diffpanelHeight = 25
-" " let g:undotree_RelativeTimestamp = 1
-" " let g:undotree_TreeNodeShape = '*'
-" " let g:undotree_HighlightChangedText = 1
-" " let g:undotree_HighlightSyntax = "UnderLined"
-"
-" " vim-fugitive
-" " This plugin make to use git commands in vim editor
-" NeoBundle 'tpope/vim-fugitive'
-"
-" NeoBundle 'nvie/vim-flake8'
-"
-" " this plugin shows syntax error
-" NeoBundle 'scrooloose/syntastic.git'
-" let g:syntastic_python_checkers = ["flake8"]
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-"
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" highlight SyntasticError guibg=#2f0000
-"
-" " this plugin can run program in editor
-" " short cut \ r
-" NeoBundle 'thinca/vim-quickrun'
-" set splitright
-" let g:quickrun_config = {'_': {'hook/time/enable': '1'},}
-"
-" " easy motion plugin setting
-" NeoBundle 'Lokaltog/vim-easymotion'
-" let g:EasyMotion_do_mapping = 0 "Disable default mappings
-" nmap s <Plug>(easymotion-s2)
-"
-" call neobundle#end()
-
 " Required:
 filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-
-" " for UTF-8
-" set ambiwidth=double
-" set fileencoding=utf-8
-" set encoding=utf-8
-" set fileencodings=utf-8,euc-jp,japan,shift-jis,iso-2022-jp,cp932,utf-16,ucs-2-internal,ucs-2
-"
-" " for EUC
-" "set fileencoding=euc-jp
-" "set encoding=euc-jp
-" "set fileencodings=euc-jp,utf-8,japan,shift-jis,iso-2022-jp,cp932,utf-16,ucs-2-internal,ucs-2
-"
-" "set termencoding=japan
-" set termencoding=utf-8
 
 source ~/.config/nvim/format.vim
 let format_join_spaces = 2
@@ -295,7 +170,6 @@ nnoremap 1 0
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-h> <Left>
-" inoremap <C-h> <Delete>
 inoremap <C-l> <Right>
 
 " カーソル前の文字削除
@@ -312,12 +186,6 @@ inoremap <silent> <C-y>e <Esc>ly<Insert>
 inoremap <silent> <C-y>0 <Esc>ly<Insert>
 
 "   " 引用符, 括弧の設定
-"   inoremap { {}<Left>
-"   inoremap [ []<Left>
-"   inoremap ( ()<Left>
-"   inoremap " ""<Left>
-"   inoremap ' ''<Left>
-"   inoremap <> <><Left>
 let g:netrw_liststyle = 3
 let g:hybrid_use_iTerm_colors = 1
 colorscheme hybrid
@@ -331,6 +199,8 @@ inoremap <silent> h<C-h> <C-r>=MyJumptoBol('　。、．，／！？「」')<CR>
 "行末へ
 inoremap <silent> l<C-l> <C-r>=MyJumptoEol('　。、．，／！？「」')<CR>
 
+" NONUSE SETTING : This is mouse setting
+"
 " if has("mouse")
 "   set mouse=a
 " endif
