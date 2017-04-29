@@ -94,6 +94,7 @@ if dein#load_state('/Users/hanyu_t/.config/dein')
   " short cut \ r
   call dein#add('thinca/vim-quickrun')
   let g:quickrun_config = {'_': {'hook/time/enable': '1'},}
+  let g:quickrun_config={'_': {'split': 'vertical'}}
   set splitright
 
   " Required:
@@ -101,10 +102,10 @@ if dein#load_state('/Users/hanyu_t/.config/dein')
   call dein#save_state()
 endif
 
-" this option will update dein vim plugin install automatically
-if has('vim_starting') && dein#check_install()
-  call dein#install()
-endif
+" " this option will update dein vim plugin install automatically
+" if has('vim_starting') && dein#check_install()
+"   call dein#install()
+" endif
 
 " Required:
 filetype plugin indent on  
@@ -209,6 +210,19 @@ inoremap <silent> l<C-l> <C-r>=MyJumptoEol('　。、．，／！？「」')<CR>
 " if has("mouse")
 "   set mouse=a
 " endif
+
+" This operation will remember the position that last time you exit cursor
+if has("autocmd")
+  augroup redhat
+    " In text files, always limit the width of text to 78 characters
+    autocmd BufRead *.txt set tw=78
+    " When editing a file, always jump to the last cursor position
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+  augroup END
+endif
 
 """"""""""""""""""""""""""""""
 "sepが空でなければ、sepをセパレータとしてジャンプ。
