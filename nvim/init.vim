@@ -70,8 +70,8 @@ if dein#load_state('/Users/hanyu_t/.config/dein')
 
   " comment out plugin setting. This function move with <C-k>
   call dein#add("tyru/caw.vim.git")
-  nmap <C-K> <Plug>(caw:i:toggle)
-  vmap <C-K> <Plug>(caw:i:toggle)
+  nmap <C-K> <Plug>(caw:hatpos:toggle)
+  vmap <C-K> <Plug>(caw:hatpos:toggle)
 
   " vim-fugitive
   " This plugin make to use git commands in vim editor
@@ -94,7 +94,7 @@ if dein#load_state('/Users/hanyu_t/.config/dein')
   " short cut \ r
   call dein#add('thinca/vim-quickrun')
   let g:quickrun_config = {'_': {'hook/time/enable': '1'},}
-  let g:quickrun_config={'_': {'split': 'vertical'}}
+  " let g:quickrun_config = {'_': {'split': 'vertical'}}
   set splitright
 
   " Required:
@@ -106,6 +106,11 @@ endif
 " if has('vim_starting') && dein#check_install()
 "   call dein#install()
 " endif
+
+
+" nyaovim setting for markdown preview in vim
+" Vim is awesome
+g:markdown_preview_auto = 1
 
 " Required:
 filetype plugin indent on  

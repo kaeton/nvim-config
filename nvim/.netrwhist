@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/Users/hanyutatsuya/Documents/make_segmentdata/tmpdir'
 let g:netrw_dirhist_2='/Users/hanyutatsuya/Documents/make_segmentdata/tmpdir/segment'
 let g:netrw_dirhist_3='/Users/hanyutatsuya/Documents/make_segmentdata'
+let g:netrw_dirhist_4='/Users/hanyu_t/Documents/NN_class'
