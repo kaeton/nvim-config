@@ -110,7 +110,7 @@ endif
 
 " nyaovim setting for markdown preview in vim
 " Vim is awesome
-g:markdown_preview_auto = 1
+" g:markdown_preview_auto = 1
 
 " Required:
 filetype plugin indent on  
